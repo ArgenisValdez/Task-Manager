@@ -2,6 +2,7 @@ const taskForm = document.getElementById("task-form");
 
 const taskList = document.getElementById("task-list");
 
+toggleTheme ()
 loadTasks();
 
 taskForm.addEventListener("submit", (event) => {
@@ -76,3 +77,21 @@ function createTaskElement(task) {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
+
+function toggleTheme () {
+  const themeToggleButton = document.getElementById("theme-toggle-btn");
+
+  const curretTheme = localStorage.getItem("theme");
+
+  themeToggleButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+
+  const theme = document.body.classList.contains("dark-theme") ?
+  "dark" : "light";
+  localStorage.setItem("theme", theme);
+});
+
+  if(curretTheme === "dark") {
+  document.body.classList.add("dark-theme");
+}
+}
